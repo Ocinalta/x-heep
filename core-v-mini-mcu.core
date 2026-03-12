@@ -615,7 +615,7 @@ targets:
           - "-I"
           - "../src/x-heep_ip_dma_0/data"
           - "-I"
-          - "../src/pulp-platform.org__serial_link_0/pulp_platform_serial_link/include"
+          - "../src/pulp-platform.org__serial_link_0/pulp_platform_serial_link/src/axis/include"
 
 # Generators
 generators:

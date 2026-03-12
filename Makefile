@@ -251,9 +251,6 @@ verilator-run-sc:
 verilator-waves: .check-gtkwave
 	gtkwave $(VERILATOR_DIR)/waveform.fst
 
-morty:
-	$(FUSESOC) --cores-root . run --no-export --target=lint $(FUSESOC_FLAGS) openhwgroup.org:systems:core-v-mini-mcu $(FUSESOC_PARAM)
-
 ## Launches the RTL simulation with the compiled firmware (`app` target) using
 ## the Questasim model previously built (`questasim-build` target).
 questasim-run: 
@@ -298,6 +295,9 @@ openroad-sky130:
 	sed -i 's/(\*[^\n]*\*)//g' hw/vendor/pulp_platform_common_cells/src/*.sv
 	$(FUSESOC) --verbose --cores-root . run --target=asic_yosys_synthesis --flag=use_sky130 openhwgroup.org:systems:core-v-mini-mcu $(FUSESOC_PARAM) 2>&1 | tee buildopenroad.log
 	git checkout hw/vendor/pulp_platform_common_cells/*
+
+morty:
+	RUST_MIN_STACK=67108864 $(FUSESOC) --cores-root . run --build --target=pickle openhwgroup.org:systems:core-v-mini-mcu
 
 ## @section Program, Execute, and Debug w/ EPFL_Programmer
 

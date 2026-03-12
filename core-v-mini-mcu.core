@@ -589,6 +589,34 @@ targets:
         flow_path: flow/OpenROAD-flow-scripts/flow
         make_target: synth
 
+  pickle:
+    <<: *default_target
+    default_tool: morty
+    tools:
+      morty:
+        morty_options:
+          - "--prefix"
+          - "xheep_"
+          - "--strip-comments"
+          - "-I"
+          - "../src/lowrisc_prim_assert_0.1/rtl"
+          - "-I"
+          - "../src/lowrisc_prim_util_memload_0/rtl"
+          - "-I"
+          - "../src/lowrisc_dv_dv_fcov_macros_0"
+          - "-I"
+          - "../src/pulp-platform.org__common_cells_1.38.0/include"
+          - "-I"
+          - "../src/pulp-platform.org__register_interface_0/pulp_platform_register_interface/include"
+          - "-I"
+          - "../src/pulp-platform.org__axi_0.39.8/include"
+          - "-I"
+          - "../src/openhwgroup_cve2_cve2_core_0.1/rtl"
+          - "-I"
+          - "../src/x-heep_ip_dma_0/data"
+          - "-I"
+          - "../src/pulp-platform.org__serial_link_0/pulp_platform_serial_link/include"
+
 # Generators
 generators:
   # Waivers generator for Verilator 5.XXX

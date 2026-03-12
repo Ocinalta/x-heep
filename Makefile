@@ -251,6 +251,10 @@ verilator-run-sc:
 verilator-waves: .check-gtkwave
 	gtkwave $(VERILATOR_DIR)/waveform.fst
 
+
+morty:
+	$(FUSESOC) --cores-root . run --no-export --target=lint $(FUSESOC_FLAGS) openhwgroup.org:systems:core-v-mini-mcu $(FUSESOC_PARAM)
+
 ## @section Vivado
 
 ## Builds (synthesis and implementation) the bitstream for the FPGA version using Vivado
